@@ -205,10 +205,14 @@
 <li>SKINNY_OAUTH2_CLIENT_ID_DROPBOX</li>
 <li>SKINNY_OAUTH2_CLIENT_SECRET_DROPBOX</li>
 </ul>
+<pre class="highlight scala"><code><span class="k">class</span> <span class="nc">SessionsController</span> <span class="k">extends</span> <span class="nc">ApplicationController</span> <span class="k">with</span> <span class="nc">DropboxLoginFeature</span> <span class="o">{</span>
+  <span class="k">override</span> <span class="k">protected</span> <span class="k">def</span> <span class="n">saveAuthorizedUser</span><span class="o">(</span><span class="n">dropboxUser</span><span class="k">:</span> <span class="kt">DropboxUser</span><span class="o">)</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span> <span class="o">..</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
 
 <hr/>
 
-<h4 id="typetalk-from-nulab">Typetalk from Nulab</h4>
+<h4 id="typetalk-from-nulab">Typetalk from <a href="https://nulab-inc.com">Nulab</a></h4>
 
 <ul>
 <li><a href="http://www.typetalk.in/">http://www.typetalk.in/</a></li>
@@ -221,6 +225,52 @@
 <li>SKINNY_OAUTH2_CLIENT_ID_TYPETALK</li>
 <li>SKINNY_OAUTH2_CLIENT_SECRET_TYPETALK</li>
 </ul>
+<pre class="highlight scala"><code><span class="k">class</span> <span class="nc">SessionsController</span> <span class="k">extends</span> <span class="nc">ApplicationController</span> <span class="k">with</span> <span class="nc">TypetalkLoginFeature</span> <span class="o">{</span>
+  <span class="k">override</span> <span class="k">protected</span> <span class="k">def</span> <span class="n">saveAuthorizedUser</span><span class="o">(</span><span class="n">typetalkUser</span><span class="k">:</span> <span class="kt">TypetalkUser</span><span class="o">)</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span> <span class="o">..</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+
+<hr/>
+
+<h4 id="backlog-from-nulab">Backlog from <a href="https://nulab-inc.com">Nulab</a></h4>
+
+<ul>
+<li><a href="http://backlogtool.com/">http://backlogtool.com/</a></li>
+<li><a href="http://developer.nulab-inc.com/docs/backlog/auth">http://developer.nulab-inc.com/docs/backlog/auth</a></li>
+</ul>
+
+<p>As same as above examples, these env variables are expected by default.</p>
+
+<ul>
+<li>SKINNY_OAUTH2_CLIENT_ID_BACKLOG</li>
+<li>SKINNY_OAUTH2_CLIENT_SECRET_BACKLOG</li>
+</ul>
+
+<p>Specify your own space id as <code>spaceID</code> in the controller.</p>
+<pre class="highlight scala"><code><span class="k">class</span> <span class="nc">SessionsController</span> <span class="k">extends</span> <span class="nc">ApplicationController</span> <span class="k">with</span> <span class="nc">BacklogLoginFeature</span> <span class="o">{</span>
+  <span class="k">override</span> <span class="k">def</span> <span class="n">spaceID</span> <span class="k">=</span> <span class="s">"subdomain name"</span>
+  <span class="k">override</span> <span class="k">protected</span> <span class="k">def</span> <span class="n">saveAuthorizedUser</span><span class="o">(</span><span class="n">backlogUser</span><span class="k">:</span> <span class="kt">BacklogUser</span><span class="o">)</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span> <span class="o">..</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+
+<p>Although it&rsquo;s a little bit confusing, OAuth2 support for Japanese customers are separated. Add &ldquo;JP&rdquo; suffix for all the configuarations.</p>
+
+<ul>
+<li><a href="http://www.backlog.jp/">http://www.backlog.jp/</a></li>
+</ul>
+
+<p>These env variables are expected by default.</p>
+
+<ul>
+<li>SKINNY_OAUTH2_CLIENT_ID_BACKLOGJP</li>
+<li>SKINNY_OAUTH2_CLIENT_SECRET_BACKLOGJP</li>
+</ul>
+<pre class="highlight scala"><code><span class="k">class</span> <span class="nc">SessionsController</span> <span class="k">extends</span> <span class="nc">ApplicationController</span> <span class="k">with</span> <span class="nc">BacklogJPLoginFeature</span> <span class="o">{</span>
+  <span class="k">override</span> <span class="k">def</span> <span class="n">spaceID</span> <span class="k">=</span> <span class="s">"subdomain name"</span>
+  <span class="c1">// BacklogUser model is the same
+</span>  <span class="k">override</span> <span class="k">protected</span> <span class="k">def</span> <span class="n">saveAuthorizedUser</span><span class="o">(</span><span class="n">backlogUser</span><span class="k">:</span> <span class="kt">BacklogUser</span><span class="o">)</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span> <span class="o">..</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
 
 <hr/>
 
