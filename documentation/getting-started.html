@@ -42,6 +42,7 @@
                 <li><a href="/documentation/tasks.html">Tasks</a></li>
                 <li><a href="/documentation/testing.html">Testing</a></li>
                 <li><a href="/documentation/packaging.html">Packaging</a></li>
+                <li><a href="/documentation/migration-guide.html">Migration Guide</a></li>
                 <li><a href="/documentation/community.html">Community</a></li>
                 <li><a href="/contribution.html">Contribution</a></li>
               </ul>
@@ -75,6 +76,7 @@
                 <li><a href="/documentation/tasks.html">Tasks</a></li>
                 <li><a href="/documentation/testing.html">Testing</a></li>
                 <li><a href="/documentation/packaging.html">Packaging</a></li>
+                <li><a href="/documentation/migration-guide.html">Migration Guide</a></li>
                 <li><a href="/documentation/community.html">Community</a></li>
                 <li><a href="/contribution.html">Contribution</a></li>
             </ul>
@@ -121,8 +123,6 @@ skinny run
 <p>If you suffered the following error, try <code>brew uninstall node &amp;&amp; brew install node --with-npm</code> (in some cases, also need to <code>rm -rf /usr/local/lib/node_modules</code>). </p>
 
 <pre>npm is required. If you have installed node with `--without-npm` option, reinstall with `--with-npm`.</pre>
-
-<script type="text/javascript" src="https://asciinema.org/a/11426.js" id="asciicast-11426" async></script>
 
 <p>If all else fails, try using global Yeoman generator.</p>
 <pre class="highlight shell"><code>brew install node --with-npm
@@ -260,11 +260,6 @@ yo skinny
 ├── bin
 │   └── sbt-launch.jar <span class="c"># global sbt script in PATH is given priority over this</span>
 ├── build.sbt
-├── heroku <span class="c"># for Heroku deployment</span>
-│   ├── common.sh
-│   ├── run
-│   ├── skinny
-│   └── stage
 ├── project
 │   ├── Build.scala
 │   ├── build.properties
