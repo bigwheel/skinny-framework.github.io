@@ -155,6 +155,16 @@
 <span class="o">}</span>
 </code></pre>
 
+<p>If you&rsquo;d like to integrate this login feature with SkinnySession, append the following traits.</p>
+<pre class="highlight scala"><code><span class="k">import</span> <span class="nn">skinny.controller.feature.SkinnySessionOAuth2LoginFeature</span>
+
+<span class="k">class</span> <span class="nc">FBAuthController</span> <span class="k">extends</span> <span class="nc">ApplicationController</span> <span class="k">with</span> <span class="nc">FacebookLoginFeature</span> 
+  <span class="c1">// skinny.filter.SkinnySessionFilter is also required in ApplicationController
+</span>  <span class="k">with</span> <span class="nc">SkinnySessionOAuth2LoginFeature</span><span class="o">[</span><span class="kt">FacebookUser</span><span class="o">]</span> <span class="o">{</span>
+
+<span class="o">}</span>
+</code></pre>
+
 <hr/>
 
 <h4 id="github">GitHub</h4>
@@ -189,14 +199,13 @@
 <pre class="highlight scala"><code><span class="k">import</span> <span class="nn">skinny.controller.feature.GoogleLoginFeature</span>
 <span class="k">import</span> <span class="nn">skinny.oauth2.client.google.GoogleUser</span>
 
-<span class="k">class</span> <span class="nc">SessionsController</span> <span class="k">extends</span> <span class="nc">ApplicationController</span> <span class="k">with</span> <span class="nc">GoogleLoginFeature</span>
-  <span class="k">with</span> <span class="nc">SkinnySessionOAuth2LoginFeature</span><span class="o">[</span><span class="kt">GoogleUser</span><span class="o">]</span> <span class="k">with</span> <span class="nc">SkinnyFilter</span> <span class="o">{</span>
+<span class="k">class</span> <span class="nc">SessionsController</span> <span class="k">extends</span> <span class="nc">ApplicationController</span> <span class="k">with</span> <span class="nc">GoogleLoginFeature</span> <span class="o">{</span>
 
   <span class="c1">// these env variables are expected by default
 </span>  <span class="c1">// SKINNY_OAUTH2_CLIENT_ID_GOOGLE
 </span>  <span class="c1">// SKINNY_OAUTH2_CLIENT_SECRET_GOOGLE
 </span>
-  <span class="k">override</span> <span class="k">protected</span> <span class="k">def</span> <span class="n">saveAuthorizedUser</span><span class="o">(</span><span class="n">ghUser</span><span class="k">:</span> <span class="kt">GoogleUser</span><span class="o">)</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span> <span class="o">..</span> <span class="o">}</span>
+  <span class="k">override</span> <span class="k">protected</span> <span class="k">def</span> <span class="n">saveAuthorizedUser</span><span class="o">(</span><span class="n">gUser</span><span class="k">:</span> <span class="kt">GoogleUser</span><span class="o">)</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span> <span class="o">..</span> <span class="o">}</span>
 
 <span class="o">}</span>
 </code></pre>
