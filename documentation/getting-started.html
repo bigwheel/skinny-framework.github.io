@@ -45,7 +45,7 @@ body {
 </header>
 <div class="container">
 <div class="row">
-<div class="col-md-9" role="main">
+<div class="col-md-10" role="main">
   <h2 id="getting-started">Getting Started</h2>
 
 <hr/>
@@ -62,6 +62,11 @@ body {
 
 <p>If you&rsquo;re a Windows user, don&rsquo;t worry. Use skinny.bat on cmd.exe instead.</p>
 <pre class="highlight shell"><code>./skinny run
+</code></pre>
+
+<p>When you need to specify Skinny&rsquo;s env, set <code>SKINNY_ENV</code> env variable. <code>staging.*</code> configuration will be used instead of default <code>development.*</code> in <code>src/main/resources/application.conf</code>.</p>
+<pre class="highlight shell"><code><span class="nb">export </span><span class="nv">SKINNY_ENV</span><span class="o">=</span>staging <span class="c"># default: development</span>
+./skinny run
 </code></pre>
 
 <hr/>
@@ -291,7 +296,7 @@ yo skinny
 │           ├── controller
 │           │   └── RootControllerSpec.scala <span class="c"># testing with MockController</span>
 │           └── integrationtest
-│               └── RootController_IntegrationTestSpec.scala <span class="c"># testing with embedded Jetty (scalatra-test)</span>
+│               └── RootController_IntegrationTestSpec.scala <span class="c"># testing with embedded Jetty</span>
 └── task
     └── src
         └── main
@@ -318,7 +323,7 @@ yo skinny
 }(document, 'script', 'facebook-jssdk'));</script>
   <div class="fb-like" data-href="http://skinny-framework.org/" data-layout="standard" data-action="recommend" data-show-faces="true" data-share="true"></div>
 </div>
-<div class="col-md-3" role="complementary">
+<div class="col-md-2" role="complementary">
   <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
   <ul class="nav bs-docs-sidenav side-menu">
     <li><a href="/documentation/getting-started.html">Getting Started</a></li>

@@ -45,7 +45,7 @@ body {
 </header>
 <div class="container">
 <div class="row">
-<div class="col-md-9" role="main">
+<div class="col-md-10" role="main">
   <h2 id="controller-&amp;-routes">Controller &amp; Routes</h2>
 
 <hr/>
@@ -246,7 +246,7 @@ If you&rsquo;d like to customize routings (e.g. use only creation and deletion),
 └── show.html.ssp
 </code></pre>
 
-<p>In this case, SkinnyResource provides the following URLs by default.</p>
+<p>In this case, SkinnyResource provides the following URLs from SkinnyResourceRoutes by default. If you don&rsquo;t need all the routes below, just mixin SkinnyResourceActions instead and specify only routes you need by hand.</p>
 
 <ul>
 <li>GET /members</li>
@@ -757,12 +757,14 @@ When you enable SkinnySession, these features also start using SkinnySession ins
 <p>Since Skinny 1.2.0, you can easily access request and requestScope from Futures by using futureWithRequest block.</p>
 <pre class="highlight scala"><code><span class="k">package</span> <span class="nn">controller</span>
 
+<span class="k">import</span> <span class="nn">_root_.service._</span>
+<span class="k">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span>
 <span class="k">import</span> <span class="nn">org.joda.time._</span>
-<span class="k">import</span> <span class="nn">service._</span>
 <span class="k">import</span> <span class="nn">scala.concurrent._</span>
 <span class="k">import</span> <span class="nn">scala.concurrent.duration._</span>
-<span class="k">import</span> <span class="nn">scala.concurrent.ExecutionContext.Implicits.global</span>
-<span class="k">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span>
+
+<span class="c1">// using your own ExecutionContext will be preferred in most cases
+</span><span class="k">import</span> <span class="nn">scala.concurrent.ExecutionContext.Implicits.global</span>
 
 <span class="k">case</span> <span class="k">class</span> <span class="nc">DashboardOps</span><span class="o">(</span><span class="n">controller</span><span class="k">:</span> <span class="kt">DashboardController</span><span class="o">)</span> <span class="o">{</span>
   <span class="k">def</span> <span class="n">setCurrentUser</span><span class="o">(</span><span class="k">implicit</span> <span class="n">req</span><span class="k">:</span> <span class="kt">HttpServletRequest</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span>
@@ -788,13 +790,13 @@ When you enable SkinnySession, these features also start using SkinnySession ins
         <span class="c1">//set("hourlyStats", accessService.getHourlyStatsForGraph(new LocalDate))
 </span>        <span class="n">set</span><span class="o">(</span><span class="s">"hourlyStats"</span><span class="o">,</span> <span class="n">accessService</span><span class="o">.</span><span class="n">getHourlyStatsForGraph</span><span class="o">(</span><span class="k">new</span> <span class="nc">LocalDate</span><span class="o">))(</span><span class="n">req</span><span class="o">)</span>
 
-        <span class="c1">// [error] example/src/main/scala/controller/DashboardController.scala:43: ambiguous implicit values:
-</span>        <span class="c1">// [error]  both value req of type javax.servlet.http.HttpServletRequest
-</span>        <span class="c1">// [error]  and method request in class DashboardController of type =&gt; javax.servlet.http.HttpServletRequest
-</span>        <span class="c1">// [error]  match expected type javax.servlet.http.HttpServletRequest
-</span>        <span class="c1">// [error]         set("hourlyStats", accessService.getHourlyStatsForGraph(new LocalDate))
-</span>        <span class="c1">// [error]            ^
-</span>        <span class="c1">// [error] one error found
+<span class="c1">// [error] example/src/main/scala/controller/DashboardController.scala:43: ambiguous implicit values:
+// [error]  both value req of type javax.servlet.http.HttpServletRequest
+// [error]  and method request in class DashboardController of type =&gt; javax.servlet.http.HttpServletRequest
+// [error]  match expected type javax.servlet.http.HttpServletRequest
+// [error]         set("hourlyStats", accessService.getHourlyStatsForGraph(new LocalDate))
+// [error]            ^
+// [error] one error found
 </span>      <span class="o">},</span>
 
       <span class="c1">// separate operation to outside of this controller
@@ -834,7 +836,7 @@ When you enable SkinnySession, these features also start using SkinnySession ins
 }(document, 'script', 'facebook-jssdk'));</script>
   <div class="fb-like" data-href="http://skinny-framework.org/" data-layout="standard" data-action="recommend" data-show-faces="true" data-share="true"></div>
 </div>
-<div class="col-md-3" role="complementary">
+<div class="col-md-2" role="complementary">
   <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
   <ul class="nav bs-docs-sidenav side-menu">
     <li><a href="/documentation/getting-started.html">Getting Started</a></li>
